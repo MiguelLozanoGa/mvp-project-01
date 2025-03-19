@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <!--  ALERT  -->
+    <UiPartialsAlert message="Añade participantes abajo!" />
+
     <h1>Participants</h1>
 
     <!-- Formulario -->
@@ -7,11 +10,11 @@
       <input
         v-model="newParticipant"
         type="text"
-        placeholder="Enter participant name"
+        placeholder="Nombre del Participante"
         required
         class="form-control mb-2"
       />
-      <button type="submit" class="btn btn-primary">Add Participant</button>
+      <button type="submit" class="btn btn-primary">Nuevo Participante</button>
     </form>
 
     <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -20,6 +23,7 @@
       </div>
     </div>
 
+    <!-- Botón  eliminar todos  -->
     <button v-if="participants.length" @click="clearParticipants" class="btn btn-danger">
       Clear All
     </button>
