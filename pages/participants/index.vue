@@ -2,16 +2,13 @@
   <div class="container">
     <h1>Participants Page</h1>
 
-    <!-- Botón formulario -->
     <UiBaseButton label="Add Participant" @action="toggleForm" />
 
-    <!-- Formulario  -->
-    <form v-if="showForm" @submit.prevent="addParticipant" class="form">
+    <form v-if="showForm" @submit.prevent="handleAdd" class="form">
       <input v-model="newParticipant" type="text" placeholder="Enter participant name" required />
       <button type="submit">Add</button>
     </form>
 
-    <!-- Tabla -->
     <table v-if="participants.length > 0" class="participants-table">
       <thead>
         <tr>
@@ -22,40 +19,28 @@
       <tbody>
         <tr v-for="(participant, index) in participants" :key="index">
           <td>{{ participant }}</td>
-          <td>
-            <button @click="removeParticipant(index)">Delete</button>
-          </td>
+          <td><button @click="removeParticipant(index)">Delete</button></td>
         </tr>
       </tbody>
     </table>
 
-    <!-- Botón  borrar todo  -->
     <button v-if="participants.length > 0" @click="clearParticipants">Clear All</button>
   </div>
 </template>
 
 <script setup lang="ts">
+  const { participants, addParticipant, removeParticipant, clearParticipants } = useParticipants();
+
   const showForm = ref(false);
   const newParticipant = ref('');
-  const participants = ref<string[]>([]);
 
   const toggleForm = () => {
     showForm.value = !showForm.value;
   };
 
-  const addParticipant = () => {
-    if (newParticipant.value.trim() !== '') {
-      participants.value.push(newParticipant.value.trim());
-      newParticipant.value = '';
-    }
-  };
-
-  const removeParticipant = (index: number) => {
-    participants.value.splice(index, 1);
-  };
-
-  const clearParticipants = () => {
-    participants.value = [];
+  const handleAdd = () => {
+    addParticipant(newParticipant.value);
+    newParticipant.value = '';
   };
 </script>
 
