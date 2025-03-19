@@ -1,7 +1,7 @@
 <template>
   <div>
     <UiPartialsTopNavBar />
-    <uiHeader />
+    <UiPartialsHeader />
     <slot />
   </div>
 </template>
