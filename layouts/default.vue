@@ -3,5 +3,6 @@
     <UiPartialsTopNavBar />
     <UiPartialsHeader />
     <slot />
+    <UiPartialsFooter />
   </div>
 </template>
