@@ -9,7 +9,7 @@
       <button type="submit">Add</button>
     </form>
 
-    <table v-if="participants.length > 0" class="participants-table">
+    <table v-if="participants.length > 0" class="table">
       <thead>
         <tr>
           <th>Participant</th>

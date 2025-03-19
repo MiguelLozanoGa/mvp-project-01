@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <uiHeader />
-        <slot />
-    </div>
+  <div>
+    <UiPartialsTopNavBar />
+    <uiHeader />
+    <slot />
+  </div>
 </template>
